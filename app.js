@@ -1,7 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-
+const views = require('./views/index')
 
 const app = express();
 
@@ -13,7 +13,8 @@ const PORT = 3000;
 
 
 app.get("/", (req, res) => {
-  res.send("<h1>HELLO WORLD</h1>");
+  let post = ""
+  res.send(views.main(post));
 })
 
 app.listen(PORT, () => {
