@@ -23,7 +23,7 @@ const PORT = 3000;
 
 app.get("/", (req, res) => {
   let post = ""
-  res.send(views.main(post));
+  res.redirect('/wiki');
 })
 
 const init = async () => {
