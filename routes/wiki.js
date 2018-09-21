@@ -13,6 +13,16 @@ wikiRouter.get('/add', async (req, res, next) => {
   res.send(views.addPage());
 });
 
+wikiRouter.get('/:slug', async (req, res, next) => {
+  try {
+    const page = await models.Page.findOne({
+      where: {
+        slug: req.params.slug
+      }
+    });
+    res.send(views.wikiPage(page));
+  } catch (error) {next(error)}
+});
 // POST
 
 wikiRouter.post('/', async (req, res, next) => {
@@ -29,7 +39,8 @@ wikiRouter.post('/', async (req, res, next) => {
   });
   try {
     await page.save();
-    res.redirect('/');
+    console.log(page);
+    res.redirect(`/wiki/${page.slug}`);
   } catch (error) { next(error) }
 });
 
