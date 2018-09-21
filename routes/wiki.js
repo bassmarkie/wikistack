@@ -13,11 +13,12 @@ wikiRouter.get('/add', (req, res, next) => {
   res.send(views.addPage());
 });
 
-//POST
+// POST
 
-// wikiRouter.post('/', (req, res, next) => {
-//   res.send('POST main wiki')
-// });
+wikiRouter.post('/', (req, res, next) => {
+  console.log(req.body)
+  res.send('POST main wiki')
+});
 
 
 module.exports = wikiRouter
